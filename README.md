@@ -6,7 +6,7 @@ This a versatile MPI password breaking tool example.
 MD5
 ---
 
-You can generate MD5 tables for alphanumeric characters up to lenght 5 using:
+You can generate MD5 tables for alphanumeric characters up to length 5 using:
 
 ``
 make
@@ -36,3 +36,8 @@ void mpi_brute_force( const char * choices,
 - **max_len** : maximum key length
 - **cb** : callback to be called on each key
 - **arg** : argument to be passed to each callback
+
+Licence
+-------
+
+This project is CECILL-C fully compatible with LGPL, please use it responsibly.
