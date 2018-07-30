@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <mpi.h>
 
-#include "pw_brute.h"
+#include "mpi_brute.h"
 
 void value_entry(char * data, void * arg )
 {

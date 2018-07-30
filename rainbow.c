@@ -1,10 +1,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+
 #include <mpi.h>
 #include <openssl/md5.h>
 
-#include "pw_brute.h"
+#include "mpi_brute.h"
 
 
 FILE * out_file = NULL;
@@ -33,6 +34,7 @@ void compute_hash(char * data, void * arg )
     md5sum(data, hash);
 
     fprintf(out_file, "%s %s\n", data, hash);
+    cnt++;
 }
 
 
@@ -44,13 +46,13 @@ int main(int argc, char ** argv )
     MPI_Comm_rank(MPI_COMM_WORLD, &rank );
 
     char out[50];
-    sprintf(out, "%d.dat", rank);
+    sprintf(out, "./md5-%d.dat", rank);
 
     out_file = fopen(out, "w");
 
 
-    mpi_compute( "01",
-                 2,
+    mpi_compute( "abcdefijklmnopqrstuvwxyzABCDEFIJKLMNOPQRSTUVWXYZ0123456789",
+                 5,
                  compute_hash,
                  (void*)NULL );
 
